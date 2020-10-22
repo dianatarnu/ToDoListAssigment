@@ -47,6 +47,7 @@
         android:textSize="55sp"
         android:background="@color/background_pink"
         android:textStyle="normal"
-        android:textColor="@color/add"/>
+        android:textColor="@color/add"
+        android:onClick="navToAddItemAction"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

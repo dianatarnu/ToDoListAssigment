@@ -72,7 +72,8 @@
             android:textSize="20sp"
             android:textStyle="italic"
             android:layout_marginEnd="30dp"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff"
+            android:onClick="saveItemAction"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -81,6 +82,7 @@
             android:background="@color/buttons"
             android:textSize="20sp"
             android:textStyle="italic"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:onClick="cancelAction"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
