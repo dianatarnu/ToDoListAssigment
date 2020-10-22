@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ToDoList</string>
+    <string name="welcome_message">Welcome to Didi\'s ToDo List</string>
+    <string name="add_symbol">+</string>
+    <string name="add_item">Add an item name</string>
+    <string name="priority">Is it a priority?</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+
+</resources>
