@@ -22,6 +22,8 @@
         android:background="@color/background_pink"
         android:textStyle="italic"/>
 
+
+    //care ii dif intre android.support.v7.widget.RecyclerView si cea de jos + dependencies
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todo_item_recycler_view"
         android:layout_width="0dp"

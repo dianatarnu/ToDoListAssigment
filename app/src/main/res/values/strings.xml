@@ -6,5 +6,7 @@
     <string name="priority">Is it a priority?</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="item_name_text">Item name</string>
+    <string name="item_priority">Item priority</string>
 
 </resources>
