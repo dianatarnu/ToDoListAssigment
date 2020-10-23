@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 
-class ToDoItemsAdapter(private val todoItemsList:ArrayList<String>):
+class ToDoItemsAdapter(private val todoItemsList:ArrayList<TodoItem>):
     RecyclerView.Adapter<ToDoItemsAdapter.ViewHolder>() {
 
     // val e RootLayout din to_do_item_layout
@@ -26,7 +26,9 @@ class ToDoItemsAdapter(private val todoItemsList:ArrayList<String>):
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val constraintLayout = holder.constraintLayout  //holder. the val we passed into the class ViewHolder
         val nameTextView = constraintLayout.getChildAt(0) as TextView
-        nameTextView.text = todoItemsList[position]
+        val priorityTextView = constraintLayout.getChildAt(1) as TextView
+        nameTextView.text = todoItemsList[position].name
+        priorityTextView.text = if (todoItemsList[position].isPriority) "!!" else ""
     }
 
     //return how many items we have in our list
