@@ -1,12 +1,14 @@
 package com.example.todolist
 
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 
-class ToDoItemsAdapter(private val todoItemsList:ArrayList<TodoItem>):
+class ToDoItemsAdapter(private val todoItemsList:ArrayList<TodoItem>, val activity: MainActivity):
     RecyclerView.Adapter<ToDoItemsAdapter.ViewHolder>() {
 
     // val e RootLayout din to_do_item_layout
@@ -18,6 +20,27 @@ class ToDoItemsAdapter(private val todoItemsList:ArrayList<TodoItem>):
         //we can access each item in the to_do_item_layout with getChild method
         val constraintLayout = LayoutInflater.from(parent.context).inflate(
             R.layout.to_do_item_layout, parent, false) as ConstraintLayout
+
+        constraintLayout.setOnClickListener(View.OnClickListener {
+            val nameTextView = constraintLayout.getChildAt(0) as TextView
+            val priorityTextView = constraintLayout.getChildAt(1) as TextView
+            val nameText = nameTextView.text
+            val priorityText = priorityTextView.text
+            val hasItemPriority = if(priorityText == "!!") true else false
+
+            val intent: Intent = Intent(parent.context, AddItemActivity::class.java)
+            intent.putExtra("ITEM_NAME", nameText)
+            intent.putExtra("ITEM_PRIORITY", hasItemPriority)
+            activity.startActivity(intent)
+        })
+
+
+        constraintLayout.setOnLongClickListener(View.OnLongClickListener{
+            val position: Int = parent.indexOfChild(it) //get the position(index) we clicked on the parent
+            activity.todoItemsList.removeAt(position)   //remove item at that position
+            notifyItemRemoved(position)                 //notify the adapter that we removed this child at that position
+            true                                        // overrides the short clicklistener
+        })
 
         return ViewHolder(constraintLayout)
     }

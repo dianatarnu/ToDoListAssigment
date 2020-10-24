@@ -8,5 +8,5 @@
     <string name="cancel">Cancel</string>
     <string name="item_name_text">Item name</string>
     <string name="item_priority">Item priority</string>
-
+    <string name="edit_item">Edit an item name</string>
 </resources>

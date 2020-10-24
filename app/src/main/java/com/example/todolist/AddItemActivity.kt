@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 class AddItemActivity : AppCompatActivity() {
     private lateinit var itemNameEditTextView: TextView
     private lateinit var priorityCheckBox: CheckBox
+    private lateinit var titleTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +18,18 @@ class AddItemActivity : AppCompatActivity() {
 
         itemNameEditTextView = findViewById(R.id.enter_item)
         priorityCheckBox = findViewById(R.id.priority_checkbox)
+        titleTextView = findViewById(R.id.welcome)
+
+        val itemName = intent.getStringExtra("ITEM_NAME")
+        val itemPriority = intent.getBooleanExtra("ITEM_PRIORITY", false)
+
+        if(itemName != null){
+            itemNameEditTextView.text = itemName
+            titleTextView.setText(R.string.edit_item)
+        }
+        if(itemPriority == true){
+            priorityCheckBox.isChecked = true
+        }
     }
 
     public fun saveItemAction(view: View){
