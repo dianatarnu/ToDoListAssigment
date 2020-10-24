@@ -21,6 +21,7 @@ class ToDoItemsAdapter(private val todoItemsList:ArrayList<TodoItem>, val activi
         val constraintLayout = LayoutInflater.from(parent.context).inflate(
             R.layout.to_do_item_layout, parent, false) as ConstraintLayout
 
+        //take to the edit page through click
         constraintLayout.setOnClickListener(View.OnClickListener {
             val nameTextView = constraintLayout.getChildAt(0) as TextView
             val priorityTextView = constraintLayout.getChildAt(1) as TextView
@@ -34,7 +35,7 @@ class ToDoItemsAdapter(private val todoItemsList:ArrayList<TodoItem>, val activi
             activity.startActivity(intent)
         })
 
-
+        //delete an item through the long click
         constraintLayout.setOnLongClickListener(View.OnLongClickListener{
             val position: Int = parent.indexOfChild(it) //get the position(index) we clicked on the parent
             activity.todoItemsList.removeAt(position)   //remove item at that position
