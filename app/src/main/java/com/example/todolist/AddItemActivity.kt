@@ -12,6 +12,10 @@ class AddItemActivity : AppCompatActivity() {
     private lateinit var priorityCheckBox: CheckBox
     private lateinit var titleTextView: TextView
 
+    //see if we have to create new item
+    private var isNewItem = true
+    private lateinit var oldItem: TodoItem
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_item)
@@ -24,16 +28,31 @@ class AddItemActivity : AppCompatActivity() {
         val itemPriority = intent.getBooleanExtra("ITEM_PRIORITY", false)
 
         if(itemName != null){
-            itemNameEditTextView.text = itemName
+            itemNameEditTextView.setText(itemName)
             titleTextView.setText(R.string.edit_item)
+
+            oldItem = TodoItem(itemName)
+            isNewItem = false
         }
         if(itemPriority == true){
             priorityCheckBox.isChecked = true
+
+            oldItem.isPriority = itemPriority
         }
     }
 
     public fun saveItemAction(view: View){
+        val itemName = itemNameEditTextView.text.toString()
+        val itemPriority = priorityCheckBox.isChecked
+        val newTodoItem = TodoItem(itemName, itemPriority)
 
+        val dbo = DatabaseOperations(this)
+        if(isNewItem){
+            dbo.addItem(dbo, newTodoItem)
+        }
+        else{
+            dbo.updateItem(dbo, this.oldItem, newTodoItem)
+        }
     }
 
     public fun cancelAction(view: View){

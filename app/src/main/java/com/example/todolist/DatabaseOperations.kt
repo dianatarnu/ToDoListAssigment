@@ -13,17 +13,17 @@ class DatabaseOperations(context: Context): SQLiteOpenHelper(context, DATABASE_N
         const val DATABASE_VERSION = 1
     }
 
-    override fun onCreate(db: SQLiteDatabase?) {
+    override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(DatabaseInfo.SQL_CREATE_TABLE_QUERY)
 
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL(DatabaseInfo.SQL_DELETE_TABLE_QUERY)
         onCreate(db)
     }
 
-    override fun onDowngrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+    override fun onDowngrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         onUpgrade(db, oldVersion, newVersion)
     }
 

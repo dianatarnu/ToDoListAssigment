@@ -38,6 +38,11 @@ class ToDoItemsAdapter(private val todoItemsList:ArrayList<TodoItem>, val activi
         //delete an item through the long click
         constraintLayout.setOnLongClickListener(View.OnLongClickListener{
             val position: Int = parent.indexOfChild(it) //get the position(index) we clicked on the parent
+
+            val todoItemToRemove = activity.todoItemsList[position]     //get the todoitem that we want to remove
+            val dbo = DatabaseOperations(parent.context)        //get the new instance of DatabaseOperations
+            dbo.deleteItem(dbo, todoItemToRemove)               //delete the item thaht we have selected
+
             activity.todoItemsList.removeAt(position)   //remove item at that position
             notifyItemRemoved(position)                 //notify the adapter that we removed this child at that position
             true                                        // overrides the short clicklistener
