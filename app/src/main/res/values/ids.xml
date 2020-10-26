@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="buttons_linear_layout" type="id"></item>
+    <item name="todo_item_recycler_view" type="id"></item>
+    <item name="home_title_text_view" type="id"></item>
+</resources>

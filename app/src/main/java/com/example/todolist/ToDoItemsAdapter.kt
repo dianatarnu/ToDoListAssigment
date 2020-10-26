@@ -56,8 +56,11 @@ class ToDoItemsAdapter(private val todoItemsList:ArrayList<TodoItem>, val activi
         val constraintLayout = holder.constraintLayout  //holder. the val we passed into the class ViewHolder
         val nameTextView = constraintLayout.getChildAt(0) as TextView
         val priorityTextView = constraintLayout.getChildAt(1) as TextView
+        val dateTextView = constraintLayout.getChildAt(2) as TextView
+
         nameTextView.text = todoItemsList[position].name
         priorityTextView.text = if (todoItemsList[position].isPriority) "!!" else ""
+        dateTextView.text = todoItemsList[position].getDateAsString()
     }
 
     //return how many items we have in our list

@@ -46,6 +46,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    public fun displayTodaysItems(view: View){
+
+    }
+
+    public fun displayPastItems(view: View){
+
+    }
+
     //switch between the pages with onclick listener
     public fun navToAddItemAction(view: View){
         // An intent is an abstract description of an operation to be performed.
