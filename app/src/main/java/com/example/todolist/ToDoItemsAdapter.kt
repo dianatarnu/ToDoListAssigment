@@ -43,7 +43,7 @@ class ToDoItemsAdapter(private val todoItemsList:ArrayList<TodoItem>, val activi
             val dbo = DatabaseOperations(parent.context)        //get the new instance of DatabaseOperations
             dbo.deleteItem(dbo, todoItemToRemove)               //delete the item thaht we have selected
 
-            activity.todoItemsList.removeAt(position)   //remove item at that position
+            todoItemsList.removeAt(position)   //remove item at that position
             notifyItemRemoved(position)                 //notify the adapter that we removed this child at that position
             true                                        // overrides the short clicklistener
         })
@@ -60,7 +60,7 @@ class ToDoItemsAdapter(private val todoItemsList:ArrayList<TodoItem>, val activi
 
         nameTextView.text = todoItemsList[position].name
         priorityTextView.text = if (todoItemsList[position].isPriority) "!!" else ""
-        dateTextView.text = todoItemsList[position].getDateAsString()
+        dateTextView.text = todoItemsList[position].dateString
     }
 
     //return how many items we have in our list

@@ -5,6 +5,7 @@ import java.util.*
 class TodoItem (var name: String){
     var isPriority = false
     var date = Calendar.getInstance()
+    var dateString:String = getDateAsString()
 
     constructor(name: String, isPriority: Boolean) :this(name){
         this.isPriority = isPriority

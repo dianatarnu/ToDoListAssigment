@@ -53,6 +53,9 @@ class AddItemActivity : AppCompatActivity() {
         else{
             dbo.updateItem(dbo, this.oldItem, newTodoItem)
         }
+        //cancel automatically after saving
+        val intent: Intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     public fun cancelAction(view: View){
